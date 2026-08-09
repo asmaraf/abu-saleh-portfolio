@@ -22,7 +22,7 @@ const itemVariants = {
 
 export function Hero() {
   return (
-    <section id="home" className="relative w-full pt-12 md:pt-16 lg:pt-24 pb-16 md:pb-24 px-5 md:px-6 overflow-hidden">
+    <section id="home" className="relative w-full pt-28 md:pt-32 lg:pt-36 pb-16 md:pb-24 px-5 md:px-6 overflow-hidden">
       {/* Background Glow */}
       <div className="absolute inset-0 bg-hero-glow -z-10 pointer-events-none"></div>
       

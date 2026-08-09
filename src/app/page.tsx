@@ -1,6 +1,5 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { ScrollProgress } from "@/components/ScrollProgress";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Skills } from "@/components/sections/Skills";
@@ -12,9 +11,8 @@ import { Contact } from "@/components/sections/Contact";
 export default function Home() {
   return (
     <>
-      <ScrollProgress />
       <Navbar />
-      <main className="flex-1 pt-16">
+      <main className="flex-1">
         <Hero />
         <About />
         <Skills />
