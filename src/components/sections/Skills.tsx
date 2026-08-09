@@ -5,6 +5,78 @@ import { skillsData } from "@/data/skills";
 import { SectionHeading } from "@/components/SectionHeading";
 import { motion } from "framer-motion";
 import { LayoutTemplate, Server, BrainCircuit, Wrench } from "lucide-react";
+import {
+  SiHtml5,
+  SiCss,
+  SiJavascript,
+  SiReact,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
+  SiPython,
+  SiTensorflow,
+  SiKeras,
+  SiGit,
+  SiGithub,
+  SiFigma,
+  SiGooglecolab,
+  SiKaggle,
+} from "react-icons/si";
+import { VscVscode } from "react-icons/vsc";
+import { IconType } from "react-icons";
+
+const CanvaIcon: IconType = (props) => (
+  <svg
+    stroke="currentColor"
+    fill="currentColor"
+    strokeWidth="0"
+    viewBox="0 0 24 24"
+    height="1em"
+    width="1em"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2" />
+    <path d="M14.5 9.5c-.6-.7-1.5-1.1-2.5-1.1-2.2 0-3.8 1.6-3.8 3.6s1.6 3.6 3.8 3.6c1 0 1.9-.4 2.5-1.1" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+  </svg>
+);
+
+type SkillIconConfig = {
+  icon: IconType;
+  color?: string;
+  className?: string;
+};
+
+const skillIcons: Record<string, SkillIconConfig> = {
+  // Frontend
+  "HTML": { icon: SiHtml5, color: "#E34F26" },
+  "CSS": { icon: SiCss, color: "#1572B6" },
+  "JavaScript": { icon: SiJavascript, color: "#F7DF1E" },
+  "React": { icon: SiReact, color: "#61DAFB" },
+  "Next.js": { icon: SiNextdotjs, className: "text-foreground" },
+  "Tailwind CSS": { icon: SiTailwindcss, color: "#06B6D4" },
+
+  // Backend
+  "Node.js": { icon: SiNodedotjs, color: "#339933" },
+  "Express.js": { icon: SiExpress, className: "text-foreground" },
+  "MongoDB": { icon: SiMongodb, color: "#47A248" },
+
+  // Programming / AI / ML
+  "Python": { icon: SiPython, color: "#3776AB" },
+  "TensorFlow": { icon: SiTensorflow, color: "#FF6F00" },
+  "Keras": { icon: SiKeras, color: "#D00000" },
+
+  // Tools
+  "Git": { icon: SiGit, color: "#F05032" },
+  "GitHub": { icon: SiGithub, className: "text-foreground" },
+  "VS Code": { icon: VscVscode, color: "#007ACC" },
+  "Figma": { icon: SiFigma, color: "#F24E1E" },
+  "Canva": { icon: CanvaIcon, color: "#00C4CC" },
+  "Google Colab": { icon: SiGooglecolab, color: "#F9AB00" },
+  "Kaggle": { icon: SiKaggle, color: "#20BEFF" },
+};
 
 const cardVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -51,7 +123,7 @@ export function Skills() {
         />
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mt-16">
-          {skillsData.map((category, index) => (
+          {skillsData.map((category) => (
             <motion.div
               key={category.title}
               variants={cardVariants}
@@ -73,15 +145,26 @@ export function Skills() {
               </div>
               
               <div className="flex flex-wrap gap-2.5 relative z-10">
-                {category.skills.map((skill) => (
-                  <motion.span
-                    variants={badgeVariants}
-                    key={skill}
-                    className="bg-background text-foreground border border-card-border px-4 py-2 rounded-lg text-sm font-medium hover:border-primary/50 hover:bg-primary/5 hover:text-primary transition-all duration-300 cursor-default shadow-sm hover:shadow-md hover:-translate-y-1"
-                  >
-                    {skill}
-                  </motion.span>
-                ))}
+                {category.skills.map((skill) => {
+                  const iconConfig = skillIcons[skill];
+                  const IconComponent = iconConfig?.icon;
+
+                  return (
+                    <motion.span
+                      variants={badgeVariants}
+                      key={skill}
+                      className="inline-flex items-center gap-2 bg-background text-foreground border border-card-border px-4 py-2 rounded-lg text-sm font-medium hover:border-primary/50 hover:bg-primary/5 hover:text-primary transition-all duration-300 cursor-default shadow-sm hover:shadow-md hover:-translate-y-1"
+                    >
+                      {IconComponent && (
+                        <IconComponent
+                          className={`w-4 h-4 shrink-0 ${iconConfig.className || ""}`}
+                          style={iconConfig.color ? { color: iconConfig.color } : undefined}
+                        />
+                      )}
+                      <span>{skill}</span>
+                    </motion.span>
+                  );
+                })}
               </div>
             </motion.div>
           ))}
