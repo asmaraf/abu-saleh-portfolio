@@ -12,7 +12,7 @@ export function Experience() {
   const hasExperience = experienceData && experienceData.length > 0;
 
   return (
-    <section id="experience" className="py-20 px-4 md:px-6">
+    <section id="experience" className="py-24 px-5 md:px-6">
       <div className="container mx-auto max-w-4xl">
         <SectionHeading 
           title="Academic & Research Experience" 
@@ -43,13 +43,13 @@ export function Experience() {
                   <div className="hidden md:block absolute left-[20%] top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-card-border to-transparent -translate-x-1/2"></div>
                   
                   {/* Timeline node - Desktop */}
-                  <div className="hidden md:flex absolute left-[20%] top-2 w-5 h-5 rounded-full bg-primary -translate-x-1/2 ring-4 ring-background shadow-[0_0_15px_rgba(37,99,235,0.5)]"></div>
+                  <div className="hidden md:flex absolute left-[20%] top-2 w-5 h-5 rounded-full bg-primary -translate-x-1/2 ring-4 ring-background shadow-[0_0_15px_rgba(20,184,166,0.5)]"></div>
                   
                   {/* Timeline line - Mobile */}
                   <div className="md:hidden absolute left-0 top-2 bottom-0 w-px bg-gradient-to-b from-primary/50 via-card-border to-transparent"></div>
                   
                   {/* Timeline node - Mobile */}
-                  <div className="md:hidden absolute left-0 top-2 w-4 h-4 rounded-full bg-primary -translate-x-[7px] ring-4 ring-background shadow-[0_0_10px_rgba(37,99,235,0.5)]"></div>
+                  <div className="md:hidden absolute left-0 top-2 w-4 h-4 rounded-full bg-primary -translate-x-[7px] ring-4 ring-background shadow-[0_0_10px_rgba(20,184,166,0.5)]"></div>
   
                   <div className="md:col-span-1 md:text-right md:pr-8 mb-4 md:mb-0 pt-1.5">
                     <span className="inline-flex items-center text-sm font-bold text-primary bg-primary/10 px-4 py-1.5 rounded-full border border-primary/20">

@@ -11,7 +11,7 @@ export function Footer() {
 
   return (
     <footer className="border-t border-card-border bg-card">
-      <div className="container mx-auto px-4 py-8 md:px-6">
+      <div className="container mx-auto px-5 py-8 md:px-6">
         <div className="flex flex-col mb-8">
           <div>
             <Link href="/" className="text-xl font-bold tracking-tighter text-foreground mb-2 inline-block">

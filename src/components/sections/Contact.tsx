@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 
 export function Contact() {
   return (
-    <section id="contact" className="py-20 px-4 md:px-6">
+    <section id="contact" className="py-24 px-5 md:px-6">
       <div className="container mx-auto max-w-5xl">
         <SectionHeading 
           title="Get In Touch" 
@@ -27,14 +27,14 @@ export function Contact() {
             className="space-y-8"
           >
             <div className="bg-card border border-card-border p-8 rounded-2xl shadow-sm">
-              <h3 className="text-2xl font-bold text-foreground mb-6">Contact Information</h3>
+              <h3 className="font-heading text-2xl font-bold text-foreground mb-6">Contact Information</h3>
               
               <div className="space-y-6">
                 <a 
                   href={`mailto:${personalInfo.contact.email}`}
                   className="flex items-start p-4 -ml-4 rounded-xl hover:bg-muted/10 transition-colors group"
                 >
-                  <div className="bg-primary/10 p-3 rounded-lg text-primary mr-4 group-hover:bg-primary group-hover:text-white transition-colors">
+                  <div className="bg-primary/10 p-3 rounded-lg text-primary mr-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                     <Mail className="w-6 h-6" />
                   </div>
                   <div>
@@ -47,7 +47,7 @@ export function Contact() {
                   href={`tel:${personalInfo.contact.phone.replace(/\s+/g, '')}`}
                   className="flex items-start p-4 -ml-4 rounded-xl hover:bg-muted/10 transition-colors group"
                 >
-                  <div className="bg-primary/10 p-3 rounded-lg text-primary mr-4 group-hover:bg-primary group-hover:text-white transition-colors">
+                  <div className="bg-primary/10 p-3 rounded-lg text-primary mr-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                     <Phone className="w-6 h-6" />
                   </div>
                   <div>
@@ -68,7 +68,7 @@ export function Contact() {
             transition={{ duration: 0.5 }}
           >
             <form className="bg-card border border-card-border p-8 rounded-2xl shadow-sm h-full" onSubmit={(e) => e.preventDefault()}>
-              <h3 className="text-2xl font-bold text-foreground mb-6">Send Me a Message</h3>
+              <h3 className="font-heading text-2xl font-bold text-foreground mb-6">Send Me a Message</h3>
               
               <div className="space-y-4">
                 <div>

@@ -13,7 +13,7 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <div className="group relative rounded-2xl border border-card-border bg-card overflow-hidden hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 hover:-translate-y-1 flex flex-col h-full">
+    <div className="group relative rounded-2xl border border-card-border bg-card overflow-hidden hover:shadow-2xl hover:shadow-primary/20 hover:border-primary/40 transition-all duration-500 hover:-translate-y-2 flex flex-col h-full">
       {/* Subtle top gradient line for premium feel */}
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
@@ -25,7 +25,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               alt={`Screenshot of ${project.name} project`}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              className="object-cover transition-transform duration-700 group-hover:scale-[1.08]"
             />
             {/* Image Overlay */}
             <div className="absolute inset-0 bg-background/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -100,13 +100,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
             {project.technologies.slice(0, 4).map((tech) => (
               <span 
                 key={tech} 
-                className="text-xs font-semibold bg-primary/5 text-primary border border-primary/10 px-2.5 py-1 rounded-md whitespace-nowrap"
+                className="text-xs font-semibold bg-primary/10 text-primary border border-primary/20 px-3 py-1 rounded-full whitespace-nowrap"
               >
                 {tech}
               </span>
             ))}
             {project.technologies.length > 4 && (
-              <span className="text-xs font-semibold bg-muted/10 text-muted px-2.5 py-1 rounded-md border border-card-border whitespace-nowrap">
+              <span className="text-xs font-semibold bg-muted/10 text-muted px-3 py-1 rounded-full border border-card-border whitespace-nowrap">
                 +{project.technologies.length - 4}
               </span>
             )}

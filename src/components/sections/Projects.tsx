@@ -11,7 +11,7 @@ export function Projects() {
   const hasProjects = projectsData && projectsData.length > 0;
 
   return (
-    <section id="projects" className="py-20 px-4 md:px-6 bg-muted/5">
+    <section id="projects" className="py-24 px-5 md:px-6 bg-muted/5">
       <div className="container mx-auto max-w-6xl">
         <SectionHeading 
           title="Featured Projects" 
@@ -33,8 +33,8 @@ export function Projects() {
                 key={project.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
                 className="h-full"
               >
                 <ProjectCard project={project} />

@@ -6,6 +6,23 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { motion } from "framer-motion";
 import { LayoutTemplate, Server, BrainCircuit, Wrench } from "lucide-react";
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { 
+      duration: 0.5,
+      staggerChildren: 0.05 
+    } 
+  }
+};
+
+const badgeVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  show: { opacity: 1, scale: 1, transition: { duration: 0.3 } }
+};
+
 const getCategoryIcon = (title: string) => {
   switch (title) {
     case "Frontend":
@@ -23,7 +40,7 @@ const getCategoryIcon = (title: string) => {
 
 export function Skills() {
   return (
-    <section id="skills" className="py-24 px-4 md:px-6 relative overflow-hidden">
+    <section id="skills" className="py-24 px-5 md:px-6 relative overflow-hidden">
       {/* Subtle Background Elements */}
       <div className="absolute top-1/2 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
       
@@ -37,10 +54,10 @@ export function Skills() {
           {skillsData.map((category, index) => (
             <motion.div
               key={category.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-100px" }}
               className="group bg-card border border-card-border hover:border-primary/30 rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 relative overflow-hidden"
             >
               {/* Card Highlight Gradient */}
@@ -57,12 +74,13 @@ export function Skills() {
               
               <div className="flex flex-wrap gap-2.5 relative z-10">
                 {category.skills.map((skill) => (
-                  <span
+                  <motion.span
+                    variants={badgeVariants}
                     key={skill}
-                    className="bg-background text-foreground border border-card-border px-4 py-2 rounded-lg text-sm font-medium hover:border-primary/50 hover:bg-primary/5 hover:text-primary transition-all duration-300 cursor-default shadow-sm hover:shadow hover:-translate-y-0.5"
+                    className="bg-background text-foreground border border-card-border px-4 py-2 rounded-lg text-sm font-medium hover:border-primary/50 hover:bg-primary/5 hover:text-primary transition-all duration-300 cursor-default shadow-sm hover:shadow-md hover:-translate-y-1"
                   >
                     {skill}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </motion.div>

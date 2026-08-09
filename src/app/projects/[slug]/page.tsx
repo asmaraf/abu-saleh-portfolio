@@ -7,6 +7,7 @@ import { GithubIcon } from "@/components/Icons";
 import { projectsData } from "@/data/projects";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { ScrollProgress } from "@/components/ScrollProgress";
 
 // Generate static params for all projects
 export function generateStaticParams() {
@@ -29,9 +30,10 @@ export default async function ProjectPage({
 
   return (
     <>
+      <ScrollProgress />
       <Navbar />
       <main className="flex-1 pt-24 pb-20">
-        <article className="container mx-auto px-4 md:px-6 max-w-4xl">
+        <article className="container mx-auto px-5 md:px-6 max-w-4xl">
           {/* Back Button */}
           <Link 
             href="/#projects" 
@@ -44,12 +46,12 @@ export default async function ProjectPage({
           {/* Header */}
           <header className="mb-12">
             <div className="flex items-center gap-3 mb-4">
-              <span className="inline-flex items-center text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full">
+              <span className="inline-flex items-center text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
                 <Tag className="w-3 h-3 mr-1.5" />
                 {project.category}
               </span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 text-balance">
+            <h1 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-6 text-balance">
               {project.name}
             </h1>
             <p className="text-xl text-muted text-balance">
@@ -62,7 +64,7 @@ export default async function ProjectPage({
                   href={project.clientGithubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary h-10 px-4 py-2 bg-card border border-card-border hover:bg-muted/10 text-foreground"
+                  className="inline-flex items-center justify-center rounded-md font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary h-10 px-4 py-2 bg-card border border-card-border hover:bg-muted/10 hover:border-primary/30 text-foreground shadow-sm"
                 >
                   <GithubIcon className="w-4 h-4 mr-2" />
                   Client Code
@@ -73,7 +75,7 @@ export default async function ProjectPage({
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary h-10 px-4 py-2 bg-primary text-white hover:bg-primary-hover shadow-sm"
+                  className="inline-flex items-center justify-center rounded-md font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary h-10 px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm"
                 >
                   <ExternalLink className="w-4 h-4 mr-2" />
                   Live Demo
@@ -84,7 +86,7 @@ export default async function ProjectPage({
                   href={project.serverApiUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary h-10 px-4 py-2 bg-card border border-card-border hover:bg-muted/10 text-foreground"
+                  className="inline-flex items-center justify-center rounded-md font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary h-10 px-4 py-2 bg-card border border-card-border hover:bg-muted/10 hover:border-primary/30 text-foreground shadow-sm"
                 >
                   <ExternalLink className="w-4 h-4 mr-2" />
                   Server API
@@ -116,7 +118,7 @@ export default async function ProjectPage({
             <div className="md:col-span-2 space-y-12">
               {project.purpose && (
                 <section>
-                  <h2 className="text-2xl font-bold text-foreground mb-4">Project Purpose</h2>
+                  <h2 className="font-heading text-2xl font-bold text-foreground mb-4">Project Purpose</h2>
                   <div className="prose prose-neutral dark:prose-invert max-w-none text-muted">
                     <p>{project.purpose}</p>
                   </div>
@@ -125,7 +127,7 @@ export default async function ProjectPage({
 
               {project.overview && (
                 <section>
-                  <h2 className="text-2xl font-bold text-foreground mb-4">Project Overview</h2>
+                  <h2 className="font-heading text-2xl font-bold text-foreground mb-4">Project Overview</h2>
                   <div className="prose prose-neutral dark:prose-invert max-w-none text-muted">
                     <p>{project.overview}</p>
                   </div>
@@ -141,7 +143,7 @@ export default async function ProjectPage({
 
               {project.features && project.features.length > 0 && (
                 <section>
-                  <h2 className="text-2xl font-bold text-foreground mb-4">Key Features</h2>
+                  <h2 className="font-heading text-2xl font-bold text-foreground mb-4">Key Features</h2>
                   <ul className="list-disc list-inside space-y-2 text-muted ml-2">
                     {project.features.map((feature, i) => (
                       <li key={i}>{feature}</li>
@@ -152,7 +154,7 @@ export default async function ProjectPage({
 
               {project.challenges && project.challenges.length > 0 && (
                 <section>
-                  <h2 className="text-2xl font-bold text-foreground mb-4">Challenges & Solutions</h2>
+                  <h2 className="font-heading text-2xl font-bold text-foreground mb-4">Challenges & Solutions</h2>
                   <ul className="list-disc list-inside space-y-2 text-muted ml-2">
                     {project.challenges.map((challenge, i) => (
                       <li key={i}>{challenge}</li>
@@ -163,7 +165,7 @@ export default async function ProjectPage({
 
               {project.futureImprovements && project.futureImprovements.length > 0 && (
                 <section>
-                  <h2 className="text-2xl font-bold text-foreground mb-4">Future Improvements</h2>
+                  <h2 className="font-heading text-2xl font-bold text-foreground mb-4">Future Improvements</h2>
                   <ul className="list-disc list-inside space-y-2 text-muted ml-2">
                     {project.futureImprovements.map((improvement, i) => (
                       <li key={i}>{improvement}</li>
@@ -177,7 +179,7 @@ export default async function ProjectPage({
             <div className="md:col-span-1">
               <div className="sticky top-24 space-y-6">
                 <div className="bg-card border border-card-border rounded-xl p-6 shadow-sm">
-                  <h3 className="text-lg font-bold text-foreground mb-4 border-b border-card-border pb-2">Technologies Used</h3>
+                  <h3 className="font-heading text-lg font-bold text-foreground mb-4 border-b border-card-border pb-2">Technologies Used</h3>
                   
                   {(project.frontendTechnologies || project.backendTechnologies || project.libraries) ? (
                     <div className="space-y-6">

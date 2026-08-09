@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 
 export function Education() {
   return (
-    <section id="education" className="py-24 px-4 md:px-6 relative">
+    <section id="education" className="py-24 px-5 md:px-6 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-muted/5 to-transparent pointer-events-none" />
       
       <div className="container mx-auto max-w-4xl relative z-10">
@@ -23,7 +23,7 @@ export function Education() {
               key={edu.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="relative pl-8 md:pl-0"
             >
@@ -33,13 +33,13 @@ export function Education() {
                 <div className="hidden md:block absolute left-[20%] top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-card-border to-transparent -translate-x-1/2"></div>
                 
                 {/* Timeline node - Desktop */}
-                <div className="hidden md:flex absolute left-[20%] top-2 w-5 h-5 rounded-full bg-primary -translate-x-1/2 ring-4 ring-background shadow-[0_0_15px_rgba(37,99,235,0.5)]"></div>
+                <div className="hidden md:flex absolute left-[20%] top-2 w-5 h-5 rounded-full bg-primary -translate-x-1/2 ring-4 ring-background shadow-[0_0_15px_rgba(20,184,166,0.5)]"></div>
                 
                 {/* Timeline line - Mobile */}
                 <div className="md:hidden absolute left-0 top-2 bottom-0 w-px bg-gradient-to-b from-primary/50 via-card-border to-transparent"></div>
                 
                 {/* Timeline node - Mobile */}
-                <div className="md:hidden absolute left-0 top-2 w-4 h-4 rounded-full bg-primary -translate-x-[7px] ring-4 ring-background shadow-[0_0_10px_rgba(37,99,235,0.5)]"></div>
+                <div className="md:hidden absolute left-0 top-2 w-4 h-4 rounded-full bg-primary -translate-x-[7px] ring-4 ring-background shadow-[0_0_10px_rgba(20,184,166,0.5)]"></div>
 
                 <div className="md:col-span-1 md:text-right md:pr-8 mb-4 md:mb-0 pt-1.5">
                   {edu.duration && (
@@ -53,7 +53,7 @@ export function Education() {
                 <div className="md:col-span-4 group bg-card border border-card-border hover:border-primary/30 rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
                   <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6">
                     <div>
-                      <h3 className="text-2xl font-bold text-foreground flex items-center group-hover:text-primary transition-colors">
+                      <h3 className="font-heading text-2xl font-bold text-foreground flex items-center group-hover:text-primary transition-colors">
                         <GraduationCap className="w-6 h-6 mr-3 text-primary" />
                         {edu.degree}
                       </h3>

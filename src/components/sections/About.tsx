@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 export function About() {
   return (
-    <section id="about" className="py-20 px-4 md:px-6 bg-muted/5">
+    <section id="about" className="py-24 px-5 md:px-6 bg-muted/5">
       <div className="container mx-auto max-w-4xl">
         <SectionHeading 
           title="About Me" 
@@ -35,7 +35,7 @@ export function About() {
             </p>
 
             <div className="pt-4">
-              <h3 className="text-foreground font-medium mb-3">Core Development Interests</h3>
+              <h3 className="font-heading text-foreground font-semibold mb-3">Core Development Interests</h3>
               <div className="flex flex-wrap gap-2">
                 {[
                   "Full Stack Web Development", 
@@ -53,7 +53,7 @@ export function About() {
             </div>
 
             <div className="pt-4">
-              <h3 className="text-foreground font-medium mb-3">AI & Research Experience</h3>
+              <h3 className="font-heading text-foreground font-semibold mb-3">AI & Research Experience</h3>
               <p className="mb-4">
                 I am also interested in AI/ML research and have worked on projects involving:
               </p>
