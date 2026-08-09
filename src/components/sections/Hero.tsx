@@ -3,7 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import { personalInfo } from "@/data/personalInfo";
-import { ArrowRight, Mail } from "lucide-react";
+import { ArrowRight, Mail, FileText } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/Icons";
 import { motion } from "framer-motion";
 
@@ -37,8 +37,8 @@ export function Hero() {
             {personalInfo.shortIntroduction}
           </p>
           
-          {/* Button */}
-          <div className="mt-6 md:mt-7">
+          {/* Buttons */}
+          <div className="mt-6 md:mt-7 flex flex-col sm:flex-row gap-4">
             <a 
               href="#projects"
               className="inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary h-12 px-8 text-lg bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm"
@@ -46,6 +46,13 @@ export function Hero() {
               View Projects
               <ArrowRight className="ml-2 w-4 h-4" />
             </a>
+            <button
+              onClick={() => alert("Resume will be available soon.")}
+              className="inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary h-12 px-8 text-lg border-2 border-primary text-primary hover:bg-primary/10 shadow-sm"
+            >
+              <FileText className="mr-2 w-4 h-4" />
+              Resume
+            </button>
           </div>
           
           {/* Social Links */}
