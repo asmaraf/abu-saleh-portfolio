@@ -9,6 +9,7 @@ export type Project = {
   category: string;
   liveUrl?: string;
   clientGithubUrl?: string;
+  serverGithubUrl?: string;
   features: string[];
   challenges: string[];
   futureImprovements: string[];
@@ -106,7 +107,8 @@ export const projectsData: Project[] = [
     deployment: ["Vercel (Client)", "Render (Server)"],
     category: "Full Stack Web Application / Doctor Appointment Booking System",
     liveUrl: "https://doc-appoint-client-nu.vercel.app",
-    clientGithubUrl: "https://github.com/asmaraf/DocAppoint",
+    clientGithubUrl: "https://github.com/asmaraf/DocAppoint-Client",
+    serverGithubUrl: "https://github.com/asmaraf/DocAppoint-Server",
     serverApiUrl: "https://docappoint-server-mvur.onrender.com",
     features: [
       "Browse doctors by specialty, ratings, experience, and consultation fees.",
@@ -121,7 +123,76 @@ export const projectsData: Project[] = [
       "Fully responsive design for desktop, tablet, and mobile.",
       "Fast loading experience with custom animations."
     ],
-    challenges: ["Information will be added later."],
-    futureImprovements: ["Information will be added later."]
+    challenges: [
+      "Preventing double-booking and slot conflicts during simultaneous user appointment requests with database-level validation.",
+      "Implementing secure JWT authentication, session persistence, and social login across client routes and protected API endpoints.",
+      "Designing multi-parameter doctor search, specialty filtering, and dynamic rating-based sorting with efficient MongoDB queries.",
+      "Handling Render backend cold-start delays on free hosting through responsive loading indicators and graceful client error handling.",
+      "Managing controlled form state for real-time appointment rescheduling and instant cancellation with feedback via React Hot Toast."
+    ],
+    futureImprovements: [
+      "Automated SMS and email notifications/reminders for upcoming appointments using Twilio and Nodemailer.",
+      "Integrated online payment gateway (Stripe / SSLCommerz) for advance consultation fee payments.",
+      "Telemedicine & video consultation feature using WebRTC for remote patient checkups.",
+      "Doctor dashboard for managing personal schedules, working hours, and time slot availability.",
+      "Patient medical record and past prescription upload capability during booking."
+    ]
+  },
+  {
+    id: "bloodlife",
+    slug: "bloodlife",
+    name: "BloodLife",
+    shortDescription: "A modern blood donation management platform designed to connect voluntary blood donors with individuals and hospitals in need of blood across Bangladesh.",
+    fullDescription: "BloodLife is a modern full-stack blood donation management platform designed to connect voluntary blood donors with individuals and hospitals in need of blood across Bangladesh. The platform streamlines medical emergencies through location-based donor search (district and upazila level), role-based dashboards (Donor, Volunteer, Admin), donation request tracking, transparent funding with Stripe, and downloadable PDF reports.",
+    overview: "BloodLife connects voluntary blood donors with individuals and hospitals in critical need across Bangladesh. Built with React 18, Vite, and Tailwind CSS, it offers a seamless experience with role-based dashboards, real-time donation requests, location-based donor search with PDF export, and Stripe donation funding.",
+    image: "/bloodlife.png",
+    technologies: [
+      "React 18", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "Vite 5",
+      "JWT Authentication", "Stripe", "Framer Motion", "Spline 3D", "Recharts", "jsPDF"
+    ],
+    frontendTechnologies: ["React 18", "Vite 5", "Tailwind CSS", "React Router DOM", "Framer Motion", "GSAP", "Spline 3D", "Lucide React"],
+    backendTechnologies: ["Node.js", "Express.js", "MongoDB", "JWT Authentication"],
+    libraries: ["Framer Motion", "GSAP", "Lucide React", "Spline 3D", "Stripe", "Recharts", "jsPDF", "html2canvas", "Axios"],
+    deployment: ["Vercel (Client)", "Render (Server)"],
+    category: "Full Stack Web Application / Blood Donation Management System",
+    liveUrl: "https://blodd-donation-client.vercel.app/",
+    clientGithubUrl: "https://github.com/asmaraf/blodd-donation-client",
+    serverGithubUrl: "https://github.com/asmaraf/blodd-donation-server",
+    serverApiUrl: "https://blodd-donation-server.onrender.com",
+    features: [
+      "Blood donor search by blood group",
+      "District and Upazila filtering",
+      "Location-based donor discovery",
+      "Donation request management",
+      "Donation request status tracking",
+      "JWT authentication",
+      "Protected routes",
+      "Role-based access control",
+      "Donor, Volunteer and Admin dashboards",
+      "User profile management",
+      "Stripe funding/payment integration",
+      "Donation and funding analytics",
+      "Dark and Light mode",
+      "Responsive UI",
+      "Glassmorphism UI",
+      "Smooth animations",
+      "Interactive 3D elements"
+    ],
+    challenges: [
+      "Implementing role-based access control for Donor, Volunteer and Admin users",
+      "Managing protected routes and JWT authentication",
+      "Building location-based donor filtering using district and upazila data",
+      "Integrating Stripe payment functionality",
+      "Managing donation request status and role-specific workflows",
+      "Maintaining a responsive interface across desktop, tablet and mobile"
+    ],
+    futureImprovements: [
+      "Real-time notifications for urgent blood requests",
+      "Improved donor availability tracking",
+      "More advanced analytics and reporting",
+      "SMS/email notifications for donation requests",
+      "Better hospital integration",
+      "Improved location-based donor matching"
+    ]
   }
 ];

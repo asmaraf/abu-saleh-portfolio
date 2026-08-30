@@ -92,6 +92,17 @@ export default async function ProjectPage({
                   Server API
                 </a>
               )}
+              {project.serverGithubUrl && (
+                <a 
+                  href={project.serverGithubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-md font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary h-10 px-4 py-2 bg-card border border-card-border hover:bg-muted/10 hover:border-primary/30 text-foreground shadow-sm"
+                >
+                  <GithubIcon className="w-4 h-4 mr-2" />
+                  Server Code
+                </a>
+              )}
             </div>
           </header>
 
