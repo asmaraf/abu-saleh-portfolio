@@ -2,7 +2,7 @@ export const personalInfo = {
   name: "Abu Saleh MD Araf",
   shortName: "ASM Araf",
   designation: "Full Stack Developer & CSE Student",
-  shortIntroduction: "I'm a Computer Science and Engineering student and aspiring Full Stack Developer who enjoys building practical web applications and exploring AI and machine learning. I turn ideas into clean, functional, and user-friendly digital products.",
+  shortIntroduction: "I'm a Computer Science and Engineering student and Full Stack Developer who enjoys crafting highly interactive, animated web applications with modern tools like GSAP & Framer Motion, while exploring AI and machine learning.",
   about: {
     journey: "[Write a brief paragraph about how you started programming and your journey so far.]",
     workStyle: "[Describe the type of development work you enjoy, e.g., building scalable backends, designing intuitive UIs.]",

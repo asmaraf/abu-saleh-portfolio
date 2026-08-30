@@ -27,7 +27,6 @@ export function Hero() {
       <div className="absolute inset-0 bg-hero-glow -z-10 pointer-events-none"></div>
       
       <div className="container mx-auto max-w-5xl flex flex-col lg:grid lg:grid-cols-2 lg:items-center gap-8 lg:gap-12 relative z-10">
-        
         {/* LEFT COLUMN: Text and Actions */}
         <motion.div 
           variants={containerVariants}

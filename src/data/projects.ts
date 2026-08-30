@@ -37,6 +37,7 @@ export const projectsData: Project[] = [
       "Tailwind CSS",
       "React Router DOM",
       "Framer Motion",
+      "GSAP",
       "Lucide React",
       "Sonner",
       "Google Gemini API"
@@ -49,7 +50,7 @@ export const projectsData: Project[] = [
       "Interaction Tracking — Keep a timeline of conversations, meetings, and memorable moments.",
       "Relationship Insights — View statistics and status indicators to identify relationships that need more attention.",
       "AI-Powered Assistance — Get intelligent suggestions using the Google Gemini API.",
-      "Modern UI — Clean, responsive interface with smooth animations.",
+      "Modern UI & Animations — Clean, responsive interface with smooth transitions powered by Framer Motion and GSAP.",
       "Fast Performance — Built with Vite for an optimized development experience."
     ],
     challenges: [
@@ -148,7 +149,7 @@ export const projectsData: Project[] = [
     image: "/bloodlife.png",
     technologies: [
       "React 18", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "Vite 5",
-      "JWT Authentication", "Stripe", "Framer Motion", "Spline 3D", "Recharts", "jsPDF"
+      "JWT Authentication", "Stripe", "Framer Motion", "GSAP", "Spline 3D", "Recharts", "jsPDF"
     ],
     frontendTechnologies: ["React 18", "Vite 5", "Tailwind CSS", "React Router DOM", "Framer Motion", "GSAP", "Spline 3D", "Lucide React"],
     backendTechnologies: ["Node.js", "Express.js", "MongoDB", "JWT Authentication"],

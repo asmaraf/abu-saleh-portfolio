@@ -90,7 +90,11 @@ export function Navbar() {
       if (element) {
         e.preventDefault();
         window.history.pushState(null, "", `#${id}`);
-        element.scrollIntoView({ behavior: "smooth" });
+        if (window.__lenis) {
+          window.__lenis.scrollTo(element, { offset: -90, duration: 1.2 });
+        } else {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
       }
     }
   };

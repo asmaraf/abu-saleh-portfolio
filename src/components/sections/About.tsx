@@ -31,7 +31,7 @@ export function About() {
             </p>
             
             <p>
-              My programming journey has gradually moved from learning the fundamentals of web development toward building complete applications and exploring machine learning and research-oriented projects. I enjoy building practical software projects where I can work on both the user interface and backend logic.
+              My programming journey has moved from mastering web development fundamentals to building full-scale applications and exploring machine learning. I specialize in crafting modern, responsive web experiences with smooth micro-animations using tools like <strong className="text-foreground font-medium">GSAP</strong> and <strong className="text-foreground font-medium">Framer Motion</strong>, alongside robust backend architecture.
             </p>
 
             <div className="pt-4">
@@ -39,6 +39,7 @@ export function About() {
               <div className="flex flex-wrap gap-2">
                 {[
                   "Full Stack Web Development", 
+                  "Interactive UI & Animations (GSAP)", 
                   "Frontend Development", 
                   "Backend Development", 
                   "Artificial Intelligence", 
