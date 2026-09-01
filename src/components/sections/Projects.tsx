@@ -11,8 +11,6 @@ import { Button } from "@/components/Button";
 export function Projects() {
   const [showAll, setShowAll] = React.useState(false);
   const hasProjects = projectsData && projectsData.length > 0;
-  const INITIAL_COUNT = 4;
-  const visibleProjects = showAll ? projectsData : projectsData.slice(0, INITIAL_COUNT);
 
   return (
     <section id="projects" className="py-24 px-5 md:px-6 bg-muted/5">
@@ -33,25 +31,33 @@ export function Projects() {
         ) : (
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-              <AnimatePresence mode="popLayout">
-                {visibleProjects.map((project, index) => (
+              {projectsData.map((project, index) => {
+                let visibilityClass = "h-full";
+                if (!showAll) {
+                  if (index >= 4 && index < 6) {
+                    visibilityClass += " hidden md:block";
+                  } else if (index >= 6) {
+                    visibilityClass += " hidden";
+                  }
+                }
+
+                return (
                   <motion.div
                     key={project.id}
-                    layout
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.4, delay: index >= INITIAL_COUNT ? (index - INITIAL_COUNT) * 0.1 : 0 }}
-                    className="h-full"
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.5, delay: (index % 3) * 0.1, ease: "easeOut" }}
+                    className={visibilityClass}
                   >
                     <ProjectCard project={project} />
                   </motion.div>
-                ))}
-              </AnimatePresence>
+                );
+              })}
             </div>
 
-            {projectsData.length > INITIAL_COUNT && (
-              <div className="mt-12 text-center">
+            {projectsData.length > 4 && (
+              <div className={`mt-12 text-center ${projectsData.length <= 6 ? "md:hidden" : ""}`}>
                 <Button
                   onClick={() => {
                     if (showAll) {
