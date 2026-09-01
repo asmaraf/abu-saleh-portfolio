@@ -195,5 +195,91 @@ export const projectsData: Project[] = [
       "Better hospital integration",
       "Improved location-based donor matching"
     ]
+  },
+  {
+    id: "ignitefund",
+    slug: "ignitefund",
+    name: "IgniteFund",
+    shortDescription: "A modern crowdfunding platform that connects supporters with creators through campaign discovery, credit-based pledging, role-based dashboards, campaign management, and secure contribution workflows.",
+    fullDescription: "IgniteFund is a modern responsive Single Page Application (SPA) frontend for a crowdfunding ecosystem. It provides role-tailored experiences for Supporters, Creators, and Administrators.\n\nThe platform connects supporters with creators through campaign discovery, credit-based pledging, role-based dashboards, campaign management, and secure contribution workflows. Designed with modern glassmorphism aesthetics and hardware-accelerated animations, IgniteFund facilitates community-driven project funding with full transparency.",
+    overview: "IgniteFund is a modern responsive Single Page Application (SPA) frontend for a crowdfunding ecosystem. It provides role-tailored experiences for Supporters, Creators, and Administrators.",
+    image: "/ignitefund.png",
+    technologies: [
+      "React 18.3.1",
+      "Vite 6.0.7",
+      "React Router DOM",
+      "Framer Motion",
+      "GSAP",
+      "Lenis",
+      "Swiper",
+      "Lucide React",
+      "Spline 3D",
+      "Canvas Confetti",
+      "Google OAuth 2.0",
+      "Axios",
+      "Vanilla CSS"
+    ],
+    frontendTechnologies: [
+      "React 18.3.1",
+      "Vite 6.0.7",
+      "React Router DOM",
+      "Vanilla CSS"
+    ],
+    backendTechnologies: [
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "JWT & Google OAuth 2.0"
+    ],
+    libraries: [
+      "Framer Motion",
+      "GSAP",
+      "Lenis",
+      "Swiper",
+      "Lucide React",
+      "Spline 3D",
+      "Canvas Confetti",
+      "Axios"
+    ],
+    deployment: ["Vercel (Client)", "Render (Server)"],
+    category: "Full Stack Web Application / Crowdfunding Platform",
+    liveUrl: "https://ignite-fund-client.vercel.app/",
+    clientGithubUrl: "https://github.com/asmaraf/IgniteFund-Client",
+    serverGithubUrl: "https://github.com/asmaraf/IgniteFund-Server",
+    serverApiUrl: "https://ignitefund-server.onrender.com",
+    features: [
+      "Crowdfunding campaign discovery with live search, category filtering, and sorting.",
+      "Detailed campaign pages with funding progress, pledge tiers, and backer engagement.",
+      "Supporter dashboard to browse campaigns, search/filter, pledge credits, purchase credits, track contributions, view payment history, and report suspicious campaigns.",
+      "Creator dashboard to create campaigns, upload campaign images, manage campaigns, monitor funding progress, review pledges, approve/reject pending pledges, request withdrawals, and view withdrawal history.",
+      "Admin dashboard to view platform statistics, approve/reject campaigns, manage users, manage user roles, manage campaigns, review reports, and review creator withdrawal requests.",
+      "Role-based protected routes and session persistence / rehydration after page refresh.",
+      "Google OAuth 2.0 authentication alongside protected route management.",
+      "Pledge management and credit purchasing workflows with payment history tracking.",
+      "Suspicious campaign reporting and administrator moderation pipeline.",
+      "Real-time in-app notifications and animated platform statistics.",
+      "Interactive 3D hero scene powered by Spline 3D and smooth scrolling with Lenis.",
+      "Swiper carousels and celebration confetti interactions.",
+      "Responsive modern glassmorphism UI built with Vanilla CSS."
+    ],
+    challenges: [
+      "Implementing multiple role-based dashboard experiences",
+      "Protecting routes based on user roles",
+      "Maintaining session state after page refresh",
+      "Managing campaign discovery with search, filtering and sorting",
+      "Building pledge and credit workflows",
+      "Handling creator withdrawal workflows",
+      "Integrating Google OAuth authentication",
+      "Creating smooth animations and interactive 3D elements without hurting usability"
+    ],
+    futureImprovements: [
+      "More advanced campaign recommendation",
+      "Real-time campaign updates",
+      "Improved notification delivery",
+      "Enhanced payment and payout workflows",
+      "More detailed campaign analytics",
+      "Improved fraud and suspicious-campaign detection",
+      "Mobile-focused dashboard improvements"
+    ]
   }
 ];
