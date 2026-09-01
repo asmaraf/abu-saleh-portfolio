@@ -4,11 +4,15 @@ import * as React from "react";
 import { projectsData } from "@/data/projects";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ProjectCard } from "@/components/ProjectCard";
-import { FolderGit2 } from "lucide-react";
-import { motion } from "framer-motion";
+import { FolderGit2, ChevronDown, ChevronUp } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/Button";
 
 export function Projects() {
+  const [showAll, setShowAll] = React.useState(false);
   const hasProjects = projectsData && projectsData.length > 0;
+  const INITIAL_COUNT = 4;
+  const visibleProjects = showAll ? projectsData : projectsData.slice(0, INITIAL_COUNT);
 
   return (
     <section id="projects" className="py-24 px-5 md:px-6 bg-muted/5">
@@ -27,20 +31,51 @@ export function Projects() {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-            {projectsData.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
-                className="h-full"
-              >
-                <ProjectCard project={project} />
-              </motion.div>
-            ))}
-          </div>
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+              <AnimatePresence mode="popLayout">
+                {visibleProjects.map((project, index) => (
+                  <motion.div
+                    key={project.id}
+                    layout
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.4, delay: index >= INITIAL_COUNT ? (index - INITIAL_COUNT) * 0.1 : 0 }}
+                    className="h-full"
+                  >
+                    <ProjectCard project={project} />
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </div>
+
+            {projectsData.length > INITIAL_COUNT && (
+              <div className="mt-12 text-center">
+                <Button
+                  onClick={() => {
+                    if (showAll) {
+                      setShowAll(false);
+                      const el = document.getElementById("projects");
+                      if (el) el.scrollIntoView({ behavior: "smooth" });
+                    } else {
+                      setShowAll(true);
+                    }
+                  }}
+                  variant="secondary"
+                  size="md"
+                  className="px-6 py-2.5 rounded-xl border border-card-border hover:border-primary/40 text-foreground hover:text-primary transition-all duration-300 shadow-sm inline-flex items-center gap-2 group"
+                >
+                  <span>{showAll ? "Show Less" : "Show More Projects"}</span>
+                  {showAll ? (
+                    <ChevronUp className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5" />
+                  ) : (
+                    <ChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5" />
+                  )}
+                </Button>
+              </div>
+            )}
+          </>
         )}
       </div>
     </section>
