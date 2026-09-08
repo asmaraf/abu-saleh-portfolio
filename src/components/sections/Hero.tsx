@@ -3,9 +3,10 @@
 import * as React from "react";
 import Image from "next/image";
 import { personalInfo } from "@/data/personalInfo";
-import { ArrowRight, Mail, FileText } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/Icons";
 import { motion } from "framer-motion";
+import { ResumeButton } from "@/components/ResumeButton";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -61,13 +62,7 @@ export function Hero() {
               View Projects
               <ArrowRight className="ml-2 w-4 h-4" />
             </a>
-            <button
-              onClick={() => alert("Resume will be available soon.")}
-              className="inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary h-12 px-8 text-lg border-2 border-primary text-primary hover:bg-primary/10 shadow-sm"
-            >
-              <FileText className="mr-2 w-4 h-4" />
-              Resume
-            </button>
+            <ResumeButton />
           </motion.div>
           
           {/* Social Links */}

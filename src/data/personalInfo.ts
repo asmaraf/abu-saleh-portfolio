@@ -20,5 +20,5 @@ export const personalInfo = {
     twitter: "https://x.com/asm_araf",
     facebook: "https://www.facebook.com/abu.saleh.md.araf"
   },
-  resumeUrl: "/resume.pdf"
+  resumeUrl: "/Abu_Saleh_MD_Araf_Resume.pdf"
 };
