@@ -21,7 +21,69 @@ const itemVariants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
 };
 
+const LINE1 = "Abu Saleh";
+const LINE2 = "MD Araf";
+const TOTAL_CHARS = LINE1.length + LINE2.length;
+
+function BlinkingCursor() {
+  return (
+    <motion.span
+      initial={{ opacity: 1 }}
+      animate={{ opacity: [1, 1, 0, 0, 1] }}
+      transition={{
+        repeat: Infinity,
+        duration: 0.8,
+        times: [0, 0.49, 0.5, 0.99, 1],
+        ease: "linear",
+      }}
+      className="inline-block font-normal ml-1 text-primary select-none"
+      aria-hidden="true"
+    >
+      |
+    </motion.span>
+  );
+}
+
 export function Hero() {
+  const [charCount, setCharCount] = React.useState(0);
+  const [isDeleting, setIsDeleting] = React.useState(false);
+
+  React.useEffect(() => {
+    let timeout: NodeJS.Timeout;
+
+    if (!isDeleting) {
+      if (charCount < TOTAL_CHARS) {
+        timeout = setTimeout(() => {
+          setCharCount((prev) => prev + 1);
+        }, 85);
+      } else {
+        // Pause for 2.5s at full name before deleting
+        timeout = setTimeout(() => {
+          setIsDeleting(true);
+        }, 2500);
+      }
+    } else {
+      if (charCount > 0) {
+        timeout = setTimeout(() => {
+          setCharCount((prev) => prev - 1);
+        }, 40);
+      } else {
+        // Pause briefly when empty before retyping
+        timeout = setTimeout(() => {
+          setIsDeleting(false);
+        }, 500);
+      }
+    }
+
+    return () => clearTimeout(timeout);
+  }, [charCount, isDeleting]);
+
+  const line1Text = LINE1.slice(0, Math.min(charCount, LINE1.length));
+  const line2Text = charCount > LINE1.length ? LINE2.slice(0, charCount - LINE1.length) : "";
+
+  const isLine1Active = charCount <= LINE1.length;
+  const isLine2Active = charCount > LINE1.length;
+
   return (
     <section id="home" className="relative w-full pt-28 md:pt-32 lg:pt-36 pb-16 md:pb-24 px-5 md:px-6 overflow-hidden">
       {/* Background Glow */}
@@ -40,8 +102,17 @@ export function Hero() {
             <span className="text-primary font-medium tracking-wider uppercase text-sm mb-2 md:mb-3">
               Welcome to my portfolio
             </span>
-            <h1 className="font-heading text-[2.5rem] leading-[1.1] md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground mb-2 md:mb-3 text-balance">
-              Hi, I&apos;m <span className="text-primary inline-block">Abu Saleh</span> <span className="text-primary inline-block">MD Araf</span>
+            <h1 className="font-heading text-[clamp(2rem,6vw,3.75rem)] leading-[1.1] font-bold tracking-tight text-foreground mb-2 md:mb-3">
+              <span className="sr-only">Hi, I&apos;m Abu Saleh MD Araf</span>
+              <span aria-hidden="true" className="block whitespace-nowrap">
+                <span>Hi, I&apos;m&nbsp;</span>
+                <span className="text-primary">{line1Text}</span>
+                {isLine1Active && <BlinkingCursor />}
+              </span>
+              <span aria-hidden="true" className="block min-h-[1.1em] text-primary whitespace-nowrap">
+                <span>{line2Text}</span>
+                {isLine2Active && <BlinkingCursor />}
+              </span>
             </h1>
             <h2 className="font-heading text-xl md:text-2xl font-medium text-muted">
               {personalInfo.designation}
