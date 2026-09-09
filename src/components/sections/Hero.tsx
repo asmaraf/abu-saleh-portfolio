@@ -21,9 +21,7 @@ const itemVariants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
 };
 
-const LINE1 = "Abu Saleh";
-const LINE2 = "MD Araf";
-const TOTAL_CHARS = LINE1.length + LINE2.length;
+const FULL_NAME = "Abu Saleh MD Araf";
 
 function BlinkingCursor() {
   return (
@@ -45,16 +43,16 @@ function BlinkingCursor() {
 }
 
 export function Hero() {
-  const [charCount, setCharCount] = React.useState(0);
+  const [displayText, setDisplayText] = React.useState("");
   const [isDeleting, setIsDeleting] = React.useState(false);
 
   React.useEffect(() => {
     let timeout: NodeJS.Timeout;
 
     if (!isDeleting) {
-      if (charCount < TOTAL_CHARS) {
+      if (displayText.length < FULL_NAME.length) {
         timeout = setTimeout(() => {
-          setCharCount((prev) => prev + 1);
+          setDisplayText(FULL_NAME.slice(0, displayText.length + 1));
         }, 85);
       } else {
         // Pause for 2.5s at full name before deleting
@@ -63,9 +61,9 @@ export function Hero() {
         }, 2500);
       }
     } else {
-      if (charCount > 0) {
+      if (displayText.length > 0) {
         timeout = setTimeout(() => {
-          setCharCount((prev) => prev - 1);
+          setDisplayText(FULL_NAME.slice(0, displayText.length - 1));
         }, 40);
       } else {
         // Pause briefly when empty before retyping
@@ -76,13 +74,7 @@ export function Hero() {
     }
 
     return () => clearTimeout(timeout);
-  }, [charCount, isDeleting]);
-
-  const line1Text = LINE1.slice(0, Math.min(charCount, LINE1.length));
-  const line2Text = charCount > LINE1.length ? LINE2.slice(0, charCount - LINE1.length) : "";
-
-  const isLine1Active = charCount <= LINE1.length;
-  const isLine2Active = charCount > LINE1.length;
+  }, [displayText, isDeleting]);
 
   return (
     <section id="home" className="relative w-full pt-28 md:pt-32 lg:pt-36 pb-16 md:pb-24 px-5 md:px-6 overflow-hidden">
@@ -102,16 +94,14 @@ export function Hero() {
             <span className="text-primary font-medium tracking-wider uppercase text-sm mb-2 md:mb-3">
               Welcome to my portfolio
             </span>
-            <h1 className="font-heading text-[clamp(2rem,6vw,3.75rem)] leading-[1.1] font-bold tracking-tight text-foreground mb-2 md:mb-3">
-              <span className="sr-only">Hi, I&apos;m Abu Saleh MD Araf</span>
-              <span aria-hidden="true" className="block whitespace-nowrap">
-                <span>Hi, I&apos;m&nbsp;</span>
-                <span className="text-primary">{line1Text}</span>
-                {isLine1Active && <BlinkingCursor />}
+            <h1 className="font-heading text-[clamp(1.6rem,3.8vw,2.75rem)] leading-[1.15] font-bold tracking-tight text-foreground mb-2 md:mb-3">
+              <span className="sr-only">Hi, I&apos;m {FULL_NAME}</span>
+              <span aria-hidden="true" className="block text-foreground mb-1">
+                Hi, I&apos;m
               </span>
-              <span aria-hidden="true" className="block min-h-[1.1em] text-primary whitespace-nowrap">
-                <span>{line2Text}</span>
-                {isLine2Active && <BlinkingCursor />}
+              <span aria-hidden="true" className="block min-h-[1.15em] text-primary whitespace-nowrap">
+                <span>{displayText}</span>
+                <BlinkingCursor />
               </span>
             </h1>
             <h2 className="font-heading text-xl md:text-2xl font-medium text-muted">
