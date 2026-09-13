@@ -67,7 +67,7 @@ export function ResumeButton({ className = "" }: ResumeButtonProps) {
       onMouseLeave={handleMouseLeave}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
-      className={`inline-flex items-center justify-center rounded-md font-medium h-12 px-8 text-lg border-2 border-primary text-primary bg-background/50 hover:bg-primary/10 hover:border-primary shadow-sm hover:shadow-lg hover:shadow-primary/15 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary select-none cursor-pointer ${className}`}
+      className={`inline-flex items-center justify-center rounded-md font-medium h-12 px-8 text-lg border-2 border-primary text-foreground bg-background/50 hover:bg-primary/10 hover:border-primary shadow-sm hover:shadow-lg hover:shadow-primary/15 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary select-none cursor-pointer ${className}`}
     >
       <FileText className="mr-2 w-5 h-5 shrink-0" />
       <span>Resume</span>
