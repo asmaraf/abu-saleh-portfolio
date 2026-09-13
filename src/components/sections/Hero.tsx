@@ -94,12 +94,12 @@ export function Hero() {
             <span className="text-primary font-medium tracking-wider uppercase text-sm mb-2 md:mb-3">
               Welcome to my portfolio
             </span>
-            <h1 className="font-heading text-[clamp(1.6rem,3.8vw,2.75rem)] leading-[1.15] font-bold tracking-tight text-foreground mb-2 md:mb-3">
+            <h1 className="font-heading font-bold tracking-tight mb-2 md:mb-3">
               <span className="sr-only">Hi, I&apos;m {FULL_NAME}</span>
-              <span aria-hidden="true" className="block text-foreground mb-1">
+              <span aria-hidden="true" className="block text-2xl sm:text-3xl md:text-4xl text-foreground mb-1 md:mb-2">
                 Hi, I&apos;m
               </span>
-              <span aria-hidden="true" className="block min-h-[1.15em] text-primary whitespace-nowrap">
+              <span aria-hidden="true" className="block min-h-[1.15em] text-[clamp(1.85rem,4.8vw,3.35rem)] leading-[1.15] text-primary whitespace-nowrap">
                 <span>{displayText}</span>
                 <BlinkingCursor />
               </span>
