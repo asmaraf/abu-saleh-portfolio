@@ -1,3 +1,15 @@
+export type AdminPanelItem = string | { label: string; subItems: string[] };
+
+export type AdminPanelSection = {
+  title: string;
+  items: AdminPanelItem[];
+};
+
+export type AdminPanel = {
+  overview?: string;
+  sections: AdminPanelSection[];
+};
+
 export type Project = {
   id: string;
   slug: string;
@@ -20,6 +32,12 @@ export type Project = {
   serverApiUrl?: string;
   overview?: string;
   deployment?: string[];
+  securityTechnologies?: string[];
+  storageTechnologies?: string[];
+  adminFunctionality?: string[];
+  adminPanel?: AdminPanel;
+  infrastructure?: string[];
+  isPrivateRepo?: boolean;
 };
 
 export const projectsData: Project[] = [
@@ -280,6 +298,183 @@ export const projectsData: Project[] = [
       "More detailed campaign analytics",
       "Improved fraud and suspicious-campaign detection",
       "Mobile-focused dashboard improvements"
+    ]
+  },
+  {
+    id: "pylea",
+    slug: "pylea",
+    name: "PYLÉA — Jewellery & Accessories E-commerce",
+    shortDescription: "A modern full-stack e-commerce platform for a light-luxury jewellery and accessories brand. Beyond a customer-facing storefront with interactive 3D product showcases and Cash on Delivery checkout, it includes a complete protected Admin Management Panel for product, category, delivery/order, media, and sales management.",
+    fullDescription: "PYLÉA is a modern full-stack D2C jewellery and accessories e-commerce platform that combines luxury editorial aesthetics with a smooth shopping experience.\n\nThe customer-facing storefront features dynamic product browsing, interactive 360° product viewing with finish switching, persistent shopping cart functionality, and a frictionless Bangladesh-focused Cash on Delivery checkout with automatic delivery fee calculation.\n\nIn addition to the customer-facing storefront, PYLÉA includes a complete protected Admin Management Panel that empowers administrators to manage the complete e-commerce operation—including product catalog management, category organization, delivery and order workflow tracking, Cloudinary media storage, and revenue/sales analytics.",
+    overview: "PYLÉA is a modern full-stack D2C jewellery and accessories e-commerce platform that combines a customer-facing luxury storefront with a complete protected Admin Management Panel. While shoppers enjoy dynamic catalog browsing, interactive 360° product viewing, persistent cart functionality, and Cash on Delivery checkout, administrators can securely oversee products, categories, orders and deliveries, media uploads, and sales analytics.",
+    image: "/pylea.png",
+    technologies: [
+      "Next.js 14.2",
+      "React 18",
+      "Tailwind CSS 3.4",
+      "GSAP 3",
+      "Node.js 18+",
+      "Express.js 4.19",
+      "MongoDB Atlas",
+      "Cloudinary"
+    ],
+    frontendTechnologies: [
+      "Next.js 14.2",
+      "React 18",
+      "Tailwind CSS 3.4",
+      "GSAP 3",
+      "Lucide React",
+      "React Context API"
+    ],
+    backendTechnologies: [
+      "Node.js 18+",
+      "Express.js 4.19",
+      "MongoDB Atlas",
+      "Mongoose 8"
+    ],
+    securityTechnologies: [
+      "JSON Web Tokens (JWT)",
+      "bcryptjs",
+      "Helmet",
+      "CORS",
+      "Express Rate Limit"
+    ],
+    storageTechnologies: [
+      "Cloudinary",
+      "Multer",
+      "Multer Storage Cloudinary"
+    ],
+    deployment: [
+      "Vercel (Frontend)",
+      "Render (Backend API)",
+      "MongoDB Atlas (Database)",
+      "Cloudinary (Media Storage)"
+    ],
+    infrastructure: [
+      "Frontend: Vercel",
+      "Backend API: Render",
+      "Database: MongoDB Atlas",
+      "Product image/media storage: Cloudinary",
+      "A scheduled cron/health-check request is used to periodically ping the Render backend and reduce inactivity-related sleeping."
+    ],
+    category: "Full-Stack E-commerce Website",
+    liveUrl: "https://frontend-xi-rose-58.vercel.app/",
+    clientGithubUrl: "https://github.com/asmaraf/PYLEA_WEBSITE",
+    serverApiUrl: "https://pylea-website.onrender.com/",
+    features: [
+      "Editorial luxury-style home page",
+      "Featured collections and bestseller showcases",
+      "Dynamic jewellery category browsing",
+      "Product search",
+      "Category filtering",
+      "Price sorting",
+      "Interactive 360° 3D jewellery product viewer",
+      "Gold, Rose Gold and Silver finish switching",
+      "Detailed product browsing",
+      "Persistent shopping bag/cart using LocalStorage",
+      "One-step Cash on Delivery checkout",
+      "Bangladesh-specific mobile number validation",
+      "Automatic delivery fee calculation",
+      "Inside Dhaka delivery fee: ৳70",
+      "Outside Dhaka delivery fee: ৳130",
+      "Sequential PYLÉA order ID generation",
+      "Dedicated About / Brand Story page",
+      "Customer Contact page",
+      "Responsive mobile-first design",
+      "Social media integration",
+      "Protected admin management portal",
+      "Product management",
+      "Category management",
+      "Order management",
+      "Order status updates",
+      "Revenue and sales analytics",
+      "Cloudinary-based product image uploads",
+      "GSAP animations and micro-interactions"
+    ],
+    adminPanel: {
+      overview: "PYLÉA includes a protected Admin Management Panel that allows the administrator to manage the complete e-commerce operation.",
+      sections: [
+        {
+          title: "Product Management",
+          items: [
+            "Add new products",
+            "Upload product images",
+            "Edit/update existing products",
+            "Update product details, pricing, and categories",
+            "Delete/remove products"
+          ]
+        },
+        {
+          title: "Category Management",
+          items: [
+            "Add new categories",
+            "Edit/update existing categories",
+            "Delete/remove categories",
+            "Organize products by category"
+          ]
+        },
+        {
+          title: "Delivery & Order Management",
+          items: [
+            "View customer orders",
+            "View complete order details",
+            "Manage the delivery/order workflow",
+            {
+              label: "Update order status:",
+              subItems: [
+                "Pending",
+                "Confirmed",
+                "Shipped",
+                "Delivered"
+              ]
+            }
+          ]
+        },
+        {
+          title: "Sales & Analytics",
+          items: [
+            "View revenue information",
+            "Monitor sales statistics",
+            "Track order activity"
+          ]
+        },
+        {
+          title: "Admin Security",
+          items: [
+            "Protected admin login",
+            "JWT-based authentication",
+            "Protected admin routes",
+            "Secure password handling with bcryptjs"
+          ]
+        },
+        {
+          title: "Media Management",
+          items: [
+            "Upload product images",
+            "Manage product media through Cloudinary"
+          ]
+        }
+      ]
+    },
+    challenges: [
+      "Creating a premium luxury-focused e-commerce interface while keeping the shopping experience simple and responsive",
+      "Implementing an interactive 360° jewellery product viewer",
+      "Building a persistent client-side shopping cart",
+      "Designing a frictionless Bangladesh-focused Cash on Delivery checkout workflow",
+      "Implementing protected admin routes and JWT authentication",
+      "Managing products, categories and orders through the admin dashboard",
+      "Integrating Cloudinary for product image storage",
+      "Maintaining smooth GSAP animations without hurting usability or responsiveness"
+    ],
+    futureImprovements: [
+      "Online payment gateway integration",
+      "Customer authentication and user accounts",
+      "Wishlist functionality",
+      "Order tracking",
+      "Personalized product recommendations",
+      "More advanced sales and customer analytics",
+      "Enhanced product discovery and filtering",
+      "Mobile-focused admin dashboard improvements"
     ]
   }
 ];

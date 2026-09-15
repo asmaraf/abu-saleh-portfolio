@@ -37,21 +37,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
         )}
         
         {/* Category Badge over image */}
-        <div className="absolute top-3 left-3 flex flex-col items-start gap-1">
-          {project.category.includes("/") ? (
-            <>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-background bg-foreground/90 backdrop-blur-md px-2 py-1 rounded shadow-sm">
-                {project.category.split(" / ")[0]}
-              </span>
-              <span className="text-xs font-semibold text-background bg-foreground/75 backdrop-blur-md px-2.5 py-1 rounded shadow-sm">
-                {project.category.split(" / ")[1]}
-              </span>
-            </>
-          ) : (
-            <span className="text-xs font-bold uppercase tracking-wider text-background bg-foreground/90 backdrop-blur-md px-2.5 py-1 rounded shadow-sm">
-              {project.category}
-            </span>
-          )}
+        <div className="absolute top-3 left-3 flex items-start">
+          <span className="text-xs font-bold uppercase tracking-wider text-background bg-foreground/90 backdrop-blur-md px-2.5 py-1 rounded shadow-sm">
+            {project.category.includes("/") ? project.category.split(" / ")[0] : project.category}
+          </span>
         </div>
       </div>
       

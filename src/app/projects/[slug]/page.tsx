@@ -70,6 +70,12 @@ export default async function ProjectPage({
                   Client Code
                 </a>
               )}
+              {project.isPrivateRepo && (
+                <div className="inline-flex items-center justify-center rounded-md font-medium text-xs sm:text-sm h-10 px-4 py-2 bg-card border border-card-border text-muted shadow-sm select-none">
+                  <GithubIcon className="w-4 h-4 mr-2 text-muted" />
+                  Private Repository • Source code available upon request
+                </div>
+              )}
               {project.liveUrl && (
                 <a 
                   href={project.liveUrl}
@@ -163,6 +169,61 @@ export default async function ProjectPage({
                 </section>
               )}
 
+              {project.adminPanel && (
+                <section>
+                  <h2 className="font-heading text-2xl font-bold text-foreground mb-4">Admin Management Panel</h2>
+                  {project.adminPanel.overview && (
+                    <p className="text-muted mb-6">{project.adminPanel.overview}</p>
+                  )}
+                  <div className="space-y-6">
+                    {project.adminPanel.sections.map((section, idx) => (
+                      <div key={idx}>
+                        <h3 className="text-base font-semibold text-foreground mb-2">{section.title}</h3>
+                        <ul className="list-disc list-inside space-y-1.5 text-muted ml-2">
+                          {section.items.map((item, itemIdx) => {
+                            if (typeof item === "string") {
+                              return <li key={itemIdx}>{item}</li>;
+                            }
+                            return (
+                              <li key={itemIdx}>
+                                <span>{item.label}</span>
+                                <ul className="list-[circle] list-inside space-y-1 text-muted ml-5 mt-1">
+                                  {item.subItems.map((sub, sIdx) => (
+                                    <li key={sIdx}>{sub}</li>
+                                  ))}
+                                </ul>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              {project.adminFunctionality && !project.adminPanel && project.adminFunctionality.length > 0 && (
+                <section>
+                  <h2 className="font-heading text-2xl font-bold text-foreground mb-4">Admin Functionality</h2>
+                  <ul className="list-disc list-inside space-y-2 text-muted ml-2">
+                    {project.adminFunctionality.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+
+              {project.infrastructure && project.infrastructure.length > 0 && (
+                <section>
+                  <h2 className="font-heading text-2xl font-bold text-foreground mb-4">Deployment & Infrastructure</h2>
+                  <ul className="list-disc list-inside space-y-2 text-muted ml-2">
+                    {project.infrastructure.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+
               {project.challenges && project.challenges.length > 0 && (
                 <section>
                   <h2 className="font-heading text-2xl font-bold text-foreground mb-4">Challenges & Solutions</h2>
@@ -192,7 +253,7 @@ export default async function ProjectPage({
                 <div className="bg-card border border-card-border rounded-xl p-6 shadow-sm">
                   <h3 className="font-heading text-lg font-bold text-foreground mb-4 border-b border-card-border pb-2">Technologies Used</h3>
                   
-                  {(project.frontendTechnologies || project.backendTechnologies || project.libraries) ? (
+                  {(project.frontendTechnologies || project.backendTechnologies || project.libraries || project.securityTechnologies || project.storageTechnologies) ? (
                     <div className="space-y-6">
                       {project.frontendTechnologies && project.frontendTechnologies.length > 0 && (
                         <div>
@@ -211,6 +272,30 @@ export default async function ProjectPage({
                           <h4 className="text-sm font-semibold text-muted mb-3 uppercase tracking-wider">Backend</h4>
                           <div className="flex flex-wrap gap-2">
                             {project.backendTechnologies.map((tech) => (
+                              <span key={tech} className="text-sm font-medium bg-muted/10 text-foreground px-3 py-1.5 rounded-lg border border-card-border">
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                      {project.securityTechnologies && project.securityTechnologies.length > 0 && (
+                        <div>
+                          <h4 className="text-sm font-semibold text-muted mb-3 uppercase tracking-wider">Authentication & Security</h4>
+                          <div className="flex flex-wrap gap-2">
+                            {project.securityTechnologies.map((tech) => (
+                              <span key={tech} className="text-sm font-medium bg-muted/10 text-foreground px-3 py-1.5 rounded-lg border border-card-border">
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                      {project.storageTechnologies && project.storageTechnologies.length > 0 && (
+                        <div>
+                          <h4 className="text-sm font-semibold text-muted mb-3 uppercase tracking-wider">File Storage</h4>
+                          <div className="flex flex-wrap gap-2">
+                            {project.storageTechnologies.map((tech) => (
                               <span key={tech} className="text-sm font-medium bg-muted/10 text-foreground px-3 py-1.5 rounded-lg border border-card-border">
                                 {tech}
                               </span>
